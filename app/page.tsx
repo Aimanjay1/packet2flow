@@ -63,7 +63,7 @@ export default function Home() {
       {/* Main canvas */}
       <main className="mx-auto w-full max-w-5xl px-4 py-10">
         <div className="flex flex-col gap-1">
-          <h2 className="text-2xl leading-8 font-semibold">New Analysis</h2>
+          <h2 className="text-2xl leading-8 font-semibold text-ink-strong">New Analysis</h2>
           <p className="text-sm leading-5 text-ink-muted">
             Upload a network capture file to begin inspection.
           </p>
