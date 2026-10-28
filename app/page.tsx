@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Search, LogOut, Settings, User, Bell } from "lucide-react";
+import { Search, LogOut, Settings, User, Bell, LogIn } from "lucide-react";
 import UploadPanel from "./components/UploadPanel";
 
 export default function Home() {
@@ -24,13 +24,13 @@ export default function Home() {
           </label>
         </div>
 
-        {/* Log Out */}
+        {/* Log In */}
         <Link
           href="/login"
           className="flex w-46.5 shrink-0 items-center justify-center gap-2 rounded-2xl bg-surface px-6 py-4 text-base leading-6 font-semibold text-brand shadow-neu transition-shadow active:shadow-neu-inset"
         >
-          Log Out
-          <LogOut size={20} aria-hidden="true" />
+          Log In
+          <LogIn size={20} aria-hidden="true" />
         </Link>
 
         {/* Actions */}
