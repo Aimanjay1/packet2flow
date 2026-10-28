@@ -1,10 +1,9 @@
 import Link from "next/link";
 import { Search, LogOut, Settings, User, Bell } from "lucide-react";
+import UploadPanel from "./components/UploadPanel";
 
 export default function Home() {
   return (
-    <>
-    <header>
       <div className={`flex flex-1 flex-col bg-surface text-ink`}>
       {/* Header / TopAppBar */}
       <header className="sticky top-0 z-10 flex items-center justify-between gap-4 rounded-b-3xl bg-surface px-6 py-4 shadow-neu">
@@ -64,16 +63,14 @@ export default function Home() {
       {/* Main canvas */}
       <main className="mx-auto w-full max-w-5xl px-4 py-10">
         <div className="flex flex-col gap-1">
-          <h2 className="text-2xl leading-8 font-semibold">New Analysis</h2>
+          <h2 className="text-2xl leading-8 font-semibold text-ink-strong">New Analysis</h2>
           <p className="text-sm leading-5 text-ink-muted">
             Upload a network capture file to begin inspection.
           </p>
         </div>
 
-        {/*<UploadPanel />*/}
+        <UploadPanel />
       </main>
     </div>
-    </header>
-    </>
   );
 }
