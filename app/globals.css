@@ -1,26 +1,70 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/*
+ * Packet2Flow design tokens
+ * Extracted from Figma — "Packet2Flow Prototype" (file i8mPQv23yIKdAegy1P6leR)
+ *
+ * Re-scan the Figma file for a fresh raw report at any time:
+ *   node scripts/figma-tokens.mjs
+ */
+
+@theme {
+  /* ===== Typography ===== */
+  --font-sans: var(--font-plus-jakarta-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-aldrich), var(--font-plus-jakarta-sans), sans-serif;
+  --font-mono:
+    "Liberation Mono", "Courier New", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Micro sizes used for labels, badges & table cells (not in Tailwind's default scale) */
+  --text-3xs: 9px;
+  --text-3xs--line-height: 13px;
+  --text-2xs: 10px;
+  --text-2xs--line-height: 15px;
+
+  /* ===== Brand (indigo) ===== */
+  --color-brand: #6366f1;
+  --color-brand-hover: #585bf5;
+  --color-brand-light: #818cf8;
+  --color-brand-dark: #4338ca;
+  --color-brand-soft: #e0e2ff;
+
+  /* ===== Accent (violet) ===== */
+  --color-accent: #7c3aed;
+  --color-accent-light: #a78bfa;
+  --color-accent-dark: #5b21b6;
+  --color-accent-soft: #ede9fe;
+
+  /* ===== Surfaces ===== */
+  --color-surface: #e8eaf0;
+  --color-surface-raised: #ffffff;
+  --color-surface-sunken: #dcdee4;
+
+  /* ===== Ink (text) ===== */
+  --color-ink: #585a68;
+  --color-ink-strong: #2e3040;
+  --color-ink-muted: #6c6e7e;
+  --color-ink-subtle: #8a8c9a;
+
+  /* ===== Semantic ===== */
+  --color-danger: #dc2626;
+  --color-danger-soft: #fee2e2;
+  --color-danger-strong: #991b1b;
+  --color-success: #34c759;
+  --color-success-strong: #2ca74b;
+  --color-warning: #ffcc00;
+
+  /* ===== Borders & dividers ===== */
+  --color-border: #dcdee4;
+
+  /* ===== Neumorphic shadows ===== */
+  --shadow-neu: -6px -6px 12px rgba(255, 255, 255, 0.6), 6px 6px 12px rgba(0, 0, 0, 0.08);
+  --shadow-neu-inset:
+    inset -4px -4px 8px rgba(255, 255, 255, 0.5), inset 4px 4px 8px rgba(0, 0, 0, 0.06);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* Base */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-surface);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
 }
