@@ -1,10 +1,9 @@
 import Link from "next/link";
 import { Search, LogOut, Settings, User, Bell } from "lucide-react";
+import UploadPanel from "./components/UploadPanel";
 
 export default function Home() {
   return (
-    <>
-    <header>
       <div className={`flex flex-1 flex-col bg-surface text-ink`}>
       {/* Header / TopAppBar */}
       <header className="sticky top-0 z-10 flex items-center justify-between gap-4 rounded-b-3xl bg-surface px-6 py-4 shadow-neu">
@@ -70,10 +69,8 @@ export default function Home() {
           </p>
         </div>
 
-        {/*<UploadPanel />*/}
+        <UploadPanel />
       </main>
     </div>
-    </header>
-    </>
   );
 }
