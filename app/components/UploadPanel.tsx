@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useState, type DragEvent } from "react";
+import { useAnalysis } from "../lib/useAnalysis";
+import AnalysisResults from "./AnalysisResults";
 
 const ACCEPTED_EXTENSIONS = [".pcap", ".cap", ".pcapng"];
 const MB = 1024 * 1024;
@@ -121,8 +123,10 @@ export default function UploadPanel() {
   const folderInput = useRef<HTMLInputElement>(null);
   const [selection, setSelection] = useState<Selection | null>(null);
   const [error, setError] = useState<{ kind: Selection["kind"]; message: string } | null>(null);
+  const analysis = useAnalysis();
 
   function select(kind: Selection["kind"], incoming: File[]) {
+    analysis.reset(); // new files picked, so clear the old results
     const files = incoming.filter(isCapture);
     const limit = kind === "file" ? FILE_LIMIT : FOLDER_LIMIT;
     const total = files.reduce((sum, f) => sum + f.size, 0);
@@ -213,16 +217,21 @@ export default function UploadPanel() {
         </Link>
         <button
           type="button"
-          disabled={!selection}
-          onClick={() => {
-            // TODO: send `selection.files` to the analysis backend.
-          }}
+          disabled={!selection || analysis.busy}
+          onClick={() => selection && analysis.start(selection.files)}
           className="flex h-12 cursor-pointer items-center gap-2 rounded-3xl bg-surface px-8 py-3 text-base leading-6 font-semibold text-brand shadow-neu transition-shadow active:shadow-neu-inset disabled:cursor-not-allowed disabled:text-ink/50 disabled:shadow-neu-inset"
         >
           <Image src="/icons/play.svg" alt="" width={11} height={14} />
-          Start Analysis
+          {analysis.busy ? "Analysing..." : "Start Analysis"}
         </button>
       </div>
+
+      {analysis.error && (
+        <p className="text-right text-sm leading-5 text-danger" role="alert">
+          {analysis.error}
+        </p>
+      )}
+      {analysis.job && <AnalysisResults job={analysis.job} />}
     </section>
   );
 }

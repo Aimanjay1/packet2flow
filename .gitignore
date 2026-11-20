@@ -42,3 +42,8 @@ next-env.d.ts
 
 # generated figma token report
 scripts/figma-tokens.report.json
+
+#backend sensitive parts
+backend/.venv/
+backend/.env
+backend/uploads/
